@@ -3,6 +3,7 @@ import cv2
 
 def get_pic_from_camera(cap):
     ret, frame = cap.read()
+    cv2.cvtColor(frame, cv2.COLOR_BGR2RGB, frame)
     if not ret:
         raise Exception("摄像头读取失败！")
     return frame

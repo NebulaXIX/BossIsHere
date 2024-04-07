@@ -1,7 +1,6 @@
 import os.path
-import re
 
-import cv2
+import face_recognition
 
 
 def check_path(path):
@@ -25,7 +24,7 @@ def faces_list(path):
         return True, faces
 
 
-def get_face_list(path="./BossFace"):
+def get_face_img_list(path="./BossFace"):
     if not check_path(path):
         raise Exception("未找到人脸库目录，应当位于./BossFace，请检查目录和权限！")
     flag, faces = faces_list(path)
