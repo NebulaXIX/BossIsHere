@@ -21,11 +21,9 @@ def recognize_faces(img, args):
     result = []
     if len(faces_encoding):
         for face_encoding in faces_encoding:
-            # matches = face_recognition.compare_faces(encodings, face_encoding, tolerance=args['tolerance'])
-            # for match in matches:
-            #     result.append(match)
-            distances = face_recognition.face_distance(encodings, face_encoding)
-            result.append(distances.any())
+            matches = face_recognition.compare_faces(encodings, face_encoding, tolerance=args['tolerance'])
+            for match in matches:
+                result.append(match)
         if True in result:
             return True
         else:
