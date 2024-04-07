@@ -50,7 +50,7 @@ if __name__ == '__main__':
         create_window(window_name)
     cameras = get_camera_list()
     get_recognition_imp(None)
-    args = {"tolerance": 0.8, "model": "large"}
+    args = {"tolerance": 0.4, "model": "large"}
     module.load_faces(tolerance=args["tolerance"], model=args["model"])
     for camera in cameras:
         threading.Thread(target=single_camera_job, args=(camera,), kwargs=args,
