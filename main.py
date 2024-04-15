@@ -5,7 +5,7 @@ from time import sleep
 
 import face_recognition_imp
 from camera_source import get_camera_list, get_pic_from_camera
-from change_window import window_exist, create_window, change_window
+from change_window import window_exist, change_window
 
 flag = False
 lock = threading.Lock()
@@ -45,9 +45,9 @@ def get_recognition_imp(imp):
 
 if __name__ == '__main__':
 
-    window_name = "Face Recognition"
+    window_name = "RustRover 2023.3 EAP.app"
     if not window_exist(window_name):
-        create_window(window_name)
+        print("alart!")
     cameras = get_camera_list()
     get_recognition_imp(None)
     args = {"tolerance": 0.4, "model": "large"}
