@@ -2,11 +2,12 @@ import cv2
 import face_recognition
 
 from faces_list import get_face_img_list
+from file_utils import get_app_data_dir
 
 encodings = []
 
 
-def load_faces(path="./BossFace", **args):
+def load_faces(path=get_app_data_dir("BossFace"), **args):
     faces_img = get_face_img_list(path)
     for face_img in faces_img:
         img = cv2.imread(face_img)
@@ -17,6 +18,7 @@ def load_faces(path="./BossFace", **args):
 
 
 def recognize_faces(img, args):
+    cv2.resize(img, (256, 256))
     faces_encoding = face_recognition.face_encodings(img, model=args['model'])
     result = []
     if len(faces_encoding):

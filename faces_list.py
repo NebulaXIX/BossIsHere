@@ -1,6 +1,9 @@
+import logging
 import os.path
 
 import face_recognition
+
+from file_utils import get_app_data_dir
 
 
 def check_path(path):
@@ -24,10 +27,11 @@ def faces_list(path):
         return True, faces
 
 
-def get_face_img_list(path="./BossFace"):
+def get_face_img_list(path=get_app_data_dir("BossFace")):
+    logging.debug(f"{path}")
     if not check_path(path):
-        raise Exception("未找到人脸库目录，应当位于./BossFace，请检查目录和权限！")
+        raise Exception(f"未找到人脸库目录，请检查目录和权限！文件应当位于{path}")
     flag, faces = faces_list(path)
     if flag:
-        raise Exception("未找到任何人脸数据，请确保人脸库中有数据且可读！")
+        raise Exception(f"未找到任何人脸数据，请确保人脸库中有数据且可读！当前人脸库{path}")
     return faces
